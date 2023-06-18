@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+ <!-- 
+    transform: 允许你旋转，缩放，倾斜或平移给定元素。这是通过修改 CSS 视觉格式化模型的坐标空间来实现的。
+    clip-path: 使用裁剪方式创建元素的可显示区域。区域内的部分显示，区域外的隐藏。
+     -->
+<html>
+    <head>
+        <link ref="stylesheet" type="text/css" src="./base.css"></link>
+        <style>
+            main{
+                width: 100%;
+                padding: 29px 0 0 ;
+            }
+            .diamond{
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                padding-bottom: 20px;
+                margin-bottom: 20px;
+                border-bottom: 1px solid #eee;
+            }
+            /**
+                > css3特有的选择器，A>B 表示选择A元素的所有子B元素。
+            */
+            .diamond > div {
+                width: 150px;
+                color: white;
+                display: inherit;
+                justify-content: center;
+                /**
+                align-items 属性将所有直接子节点上的 align-self 值设置为一个组。align-self 属性设置项目在其包含块中在交叉轴方向上的对齐方式
+                */
+                align-items: center;
+                position: relative;
+            }
+            .diamond:nth-of-type(1) > div {
+                transform: skewX(-55deg);
+                background: #b4a078;
+            }
+            .diamond:nth-of-type(1) > div > span {
+                transform: skewX(55deg);
+            }
+            .diamond:nth-of-type(2) > div::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                z-index: -1;
+                transform: skewX(-45deg);
+                background: #b4a078;
+            }
+            .diamond:nth-of-type(3) > div {
+                width: 105px;
+                height: 105px;
+                border: 29px solid transparent;
+                /* content-box 是默认值。如果你设置一个元素的宽为 100px，那么这个元素的内容区会有 100px 宽
+                            ，并且任何边框和内边距的宽度都会被增加到最后绘制出来的元素宽度中。
+                border-box 告诉浏览器：你想要设置的边框和内边距的值是包含在 width 内的。也就是说，如果你将一个元素的 width 设为 100px，
+                    那么这 100px 会包含它的 border 和 padding，内容区的实际宽度是 width 减去 (border + padding) 的值。
+                    大多数情况下，这使得我们更容易地设定一个元素的宽高 */
+                box-sizing: content-box;
+            }
+            .diamond:nth-of-type(3) > div::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                z-index: -1;
+                transform: skewX(-45deg);
+                background: #b4a078;
+            }
+            .diamond:nth-of-type(3) > img {
+                width: 300px;
+                height: 150px;
+                clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+                /* 过渡可以为一个元素在不同状态之间切换的时候定义不同的过渡效果 */
+                transition: 1s clip-path;
+            }
+            .diamond:nth-of-type(3) > img:hover {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+           <div class="diamond">
+                <p>1. 嵌套元素</p>
+                <div>
+                    <span>
+                        diamond
+                    </span>
+                </div>
+           </div> 
+           <div class="diamond">
+                <p>2 伪元素</p>
+                <div>
+                    diamond
+                </div>
+           </div>
+           <div class="diamond">
+                <div>diamond</div>
+                <img src="./static/wallhaven-3zmp73.jpg" alt="宵宫">
+           </div>
+        </main>
+    </body>
+</html>

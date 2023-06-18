@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!-- 
+    box-shadow是会紧贴border-radius圆角边的，但是，描边outline并不会与圆角边border-radius贴合
+    通过box-shadow去填补描边outline所产生的间隙
+-->
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="./base.css"></link>
+        <style>
+            main {
+                width: 100%;
+                padding: 60px 80px 80px;
+            }
+            div {
+                width: 209px;
+                margin: 29px auto;
+                padding: 8px 16px;
+                border-radius: 8px;
+                background: #f4f0ea;
+                /**
+                outline 属性是在一条声明中设置多个轮廓属性的简写属性 
+                        样式 
+                        outline: solid;
+                        颜色 | 样式
+                        outline: #f66 dashed;
+                        样式 | 宽度
+                        outline: inset thick;
+                        颜色 | 样式 | 宽度
+                        outline: green solid 3px;
+                */
+                outline: 6px solid #b4a078;
+            }
+            input {
+                margin-left: calc(50% - 45px);
+            }
+            input:checked ~ div {
+                /**
+                关于扩张半径的取值？假设圆角border-radius的半径为r,根据勾股定理，扩张半径的最小值应等于(√2−1)r ~= 3.314，最大值不能超过描边宽度，即6px。
+                */
+                box-shadow: 0 0 0 6px #b4a078;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <input id="ck" type="checkbox" checked></input>
+            <label for="ck">box-shadow</label>
+            <div>通过box-shadow去填补描边outline所产生的间隙</div>
+        </main>
+    </body>
+</html>

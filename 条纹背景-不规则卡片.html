@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link ref="stylesheet" type="text/css" src="./base.css"></link>    
+        <style>
+            main {
+                width: 100%;
+                padding: 80px 0px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+            }
+            .coupon-card {
+                width: 200px;
+                height: 120px;
+                /**
+                radial-gradient() CSS 函数创建一个图像，该图像由从原点辐射的两种或多种颜色之间的渐进过渡组成。
+                它的形状可以是圆形或椭圆形。函数的结果是 <gradient> 数据类型的对象。这是一种特别的 <image>。
+                */
+                background-image: radial-gradient(circle at 100px -8px, transparent 20px, #b4a078 21px);
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <div class="coupon-card"></div>
+        </main>
+    </body>
+</html>

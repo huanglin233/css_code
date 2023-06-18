@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--  box-shadow, outline, outline-offset -->
+<!-- 
+box-shadow只能模拟实线边框效果，某些情况下，可能需要生成虚线的边框效果，
+可以通过类似于border的描边outline和对应的描边偏移outline-offset来实现。
+ -->
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="./base.css"></link>
+        <style>
+            main{
+                width: 100%;
+                padding: 0 10vh;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                align-items: center;
+            }
+            /**
+            规定属于其父元素的第二个 div 元素的每个 div：
+            */
+            div:nth-of-type(1) {
+                width: 60px;
+                height: 60px;
+                border-radius: 50px;
+                background: #fafafa;
+                margin: 105px 29px;
+                /**
+                box-shadow 属性用于在元素的框架上添加阴影效果
+
+                x 偏移量 | y 偏移量 | 阴影颜色 
+                box-shadow: 60px -16px teal;
+
+                x 偏移量 | y 偏移量 | 阴影模糊半径 | 阴影颜色
+                box-shadow: 10px 5px 5px black;
+
+                x 偏移量 | y 偏移量 | 阴影模糊半径 | 阴影扩散半径 | 阴影颜色
+                box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+
+                插页 (阴影向内) | x 偏移量 | y 偏移量 | 阴影颜色
+                box-shadow: inset 5em 1em gold;
+
+                任意数量的阴影，以逗号分隔 
+                box-shadow: 3px 3px red, -1em 0 0.4em olive;
+
+                全局关键字 
+                box-shadow: inherit;
+                box-shadow: initial;
+                box-shadow: unset;
+                */
+                box-shadow: 0 0 0 10px #E8E2D6, 0 0 0 20px #E1D9C9,
+                0 0 0 30px #D9CFBB, 0 0 0 40px #D2C6AE,
+                0 0 0 50px #CABCA0, 0 0 0 60px #C3B393,
+                0 0 0 70px #BBA985, 0 0 0 80px #B4A078,
+                0 0 0 90px #9B8C6F, 0 0 0 100px #75684D;
+            }
+            div:nth-of-type(2) {
+                width: 200px;
+                height: 120px;
+                background: #efebe9;
+                border: 5px solid #B4A078;
+                /**
+                outline 属性是在一条声明中设置多个轮廓属性的简写属性
+                */
+                outline: #B4A078 dashed 1px;
+                outline-offset: -10px;
+                margin-bottom: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <div></div>
+            <div></div>
+        </main>
+    </body>
+</html>

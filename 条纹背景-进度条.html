@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!--  gradient, linear-gradient, radial-gradient, repeating-linear-gradient -->
+<html>
+    <head>
+        <link ref="stylesheet" type="text/css" src="./base.css"></link>
+        <style>
+            /**
+                <gradient> 是一种<image>CSS 数据类型的子类型，用于表现两种或多种颜色的过渡转变。
+                <gradient> 没有内在尺寸 (en-US)；即，不具备固有或首选的尺寸，也不具备首选的比率。其实际的大小取决于其填充元素的大小。
+                
+                linear-gradient() 函数用于创建一个表示两种或多种颜色线性渐变的图片。
+                其结果属于<gradient>数据类型，是一种特别的<image>数据类型。    
+                渐变轴为45度，从蓝色渐变到红色
+                linear-gradient(45deg, blue, red);
+                从右下到左上、从蓝色渐变到红色
+                linear-gradient(to left top, blue, red);
+            */
+            main {
+                width: 100%;
+                padding: 80px 0px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+            }
+            .progress-outer{
+                width: 60%;
+                border-radius: 8px;
+                height: 12px;
+                overflow: hidden;
+                position: relative;
+            }
+            .progress-neter{
+                height: inherit;
+                background: rgba(180, 160, 120, .2);
+            }
+            .progress-bg {
+                width: 60%;
+                height: inherit;
+                border-radius: 6px;
+                /**
+                    CSS 函数 repeating-linear-gradient() 创建一个由重复线性渐变组成的<image>，
+                    这是一个类似 linear-gradient (en-US) 的函数，并且采用相同的参数，但是它会在所有方向上重复渐变以覆盖其整个容器。
+                    这个函数的结果是一个<gradient> 数据类型的对象，这是一个特殊的<image>类型。
+                     
+                    一个倾斜 45 度的重复线性渐变，从蓝色开始渐变到红色
+                    repeating-linear-gradient(to left top, blue, red);
+
+                    一个由下至上的重复线性渐变，从蓝色开始，40% 后变绿，最后渐变到红色
+                    repeating-linear-gradient(0deg, blue, green 40%, red);
+                */
+                background: repeating-linear-gradient(-45deg, #d9cfbb 25%, red 0, yellow 50%,
+                    #D9CFBB 0, #D9CFBB 75%, #C3B393 0);
+                background-size: 16px 16px;
+                /**
+                animation 属性是 animation-name，animation-duration, animation-timing-function，animation-delay，
+                    animation-iteration-count，animation-direction，animation-fill-mode 和 animation-play-state 属性的一个简写属性形式
+                */
+                animation: panoramic 20s  linear infinite;
+            }
+            @keyframes panoramic {
+                to {
+                    background-position: 200% 0;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <div class="progress-outer">
+                <div class="progress-neter">
+                    <div class="progress-bg"></div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

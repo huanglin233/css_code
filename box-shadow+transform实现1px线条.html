@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link ref="stylesheet" type="css/text" href="./base.css"></link>
+        <style>
+            main {
+                width: 100%;
+                padding: 52px 29px;
+                display: flex;
+                justify-content: center;
+            }
+            span.one-pixel-line{
+                width: 229px;
+                position: relative;
+            }
+            span.one-pixel-line::after {
+                content: '';
+                width: 229px;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                /**
+                    box-shadow 属性用于在元素的框架上添加阴影效果。
+                    你可以在同一个元素上设置多个阴影效果，并用逗号将他们分隔开。
+                    该属性可设置的值包括阴影的 X 轴偏移量、Y 轴偏移量、模糊半径、扩散半径和颜色
+                */
+                box-shadow: 0 0 0 1px #b4a078;
+                /**
+                    CSS 属性让你更改一个元素变形的原点。
+                */
+                transform-origin: 0 bottom;
+                /**
+                    transform 属性允许你旋转，缩放，倾斜或平移给定元素。这是通过修改 CSS 视觉格式化模型的坐标空间来实现的。
+                */
+                transform: scaleY(.5) translateZ(0);
+            }
+
+            @media (min-resolution: 2dppx) {
+                span.one-pixel-line.shadow::after {
+                    box-shadow: 0 0 0 0 .5px #b4a078;
+                }
+            }
+
+            @media (min-resolution: 3dppx) {
+                span.one-pixel-line.shadow::after {
+                    box-shadow: 0 0 0 .333333px #b4a078;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <main class="main">
+            <span class="one-pixel-line shadow"></span>
+        </main>
+    </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- background-position, background-origin, calc -->
+<html>
+    <head>
+        <link ref="stylesheet" type="text/css" src="./base.css"></link>
+        <style>
+            main {
+                width: 100%;
+                padding: 80px 0px;
+                display: flex;
+                /**
+                    flex-wrap 属性指定 flex 元素单行显示还是多行显示。如果允许换行，这个属性允许你控制行的堆叠方向。
+                */
+                flex-wrap: wrap;
+                justify-content: space-around;
+            }
+
+            div {
+                width: 229px;
+                height: 139px;
+                margin: auto;
+                color: #f4f0ea;
+                padding: 16px 29px 28px 20px;
+                background: #b4a078 url('static/wallhaven-3zmp73.jpg') no-repeat bottom right / 100px 100px;
+            }
+
+            div:nth-of-type(1) {
+                /**
+                    background-position CSS 属性为每一个背景图片设置初始位置。这个位置是相对于由 background-origin 定义的位置图层的。
+                */
+                background-position: right 29px bottom 28px;
+            }
+
+            div:nth-of-type(2) {
+                /**
+                background-origin 规定了指定背景图片background-image 属性的原点位置的背景相对区域。
+                    border-box: 背景图片的摆放以 border 区域为参考
+                    padding-box: 背景图片的摆放以 padding 区域为参考
+                    content-box: 背景图片的摆放以 content 区域为参考
+                */
+                background-origin: content-box;
+                /**
+                    移动端纵向排列上下间距
+                */
+                padding: 29px 29px;
+            }
+            div:nth-of-type(3) {
+                background-position: calc(100% - 29px) calc(100% - 28px);
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <div class="block1">background-position方案</div>
+            <div class="block2">background-origin方案</div>
+            <div class="block3">calc方案</div>
+        </main>
+    </body>
+</html>

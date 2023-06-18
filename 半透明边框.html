@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--  background-clip -->
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="base.css">
+    </link>
+    <style>
+        main {
+            width: 100%;
+            padding: 60px 80px 80px;
+            background: #b4a078;
+        }
+
+        div {
+            padding: 12px;
+            margin: 20px auto;
+            background: white;
+            border: 10px solid hsla(0, 16%, 96%, 0.5);
+            /**
+                hsla 用法
+                hsla() 函数使用 Hue-saturation-lightness-alpha 模型（HSLA）定义颜色
+                HSLA 颜色值是 HSL 颜色值的扩展，带有 Alpha 通道 - 该通道指定了颜色的不透明度。
+
+                hsla(hue, saturation, lightness, alpha)
+                hue	定义色轮上的度数（从 0 到 360）- 0（或 360）为红色，120 为绿色，240 为蓝色。
+                saturation	定义饱和度 - 0％ 是灰度，而 100％ 是全彩色（完全饱和）。
+                lightness	定义亮度 - 0％ 是黑色、50％ 为正常、100％ 是白色。
+                alpha	定义不透明度，介于 0.0（完全透明）和 1.0（完全不透明）之间的数字。
+            */
+        }
+        label {
+            color: #f4f0ea;
+        }
+
+        input[id = 'bb']:checked ~ div{
+            /* 背景延伸至边框外沿（但是在边框下层） */
+            background-clip: border-box;
+        }
+
+        input[id = 'pb']:checked ~ div{
+            /** 背景延伸至内边距（padding）外沿。不会绘制到边框处 */
+            background-clip: padding-box;
+        }
+
+        input[id = 'cb']:checked ~ div{
+            /** 背景被裁剪至内容区（content box）外沿 */
+            background-clip: content-box;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <input id="bb" type="checkbox" checked></input>
+        <label for="bb">border-box(默认)</label>
+        <div>背景延伸至边框外沿（但是在边框下层）</div>
+        <input id="pb" type="checkbox" checked></input>
+        <label for="pb">padding-box(默认)</label>
+        <div>背景延伸至内边距（padding）外沿。不会绘制到边框处 </div>
+        <input id="cb" type="checkbox" checked></input>
+        <label for="cb">content-box(默认)</label>
+        <div>背景被裁剪至内容区（content box）外沿</div>
+    </main>
+</body>
+
+</html>
