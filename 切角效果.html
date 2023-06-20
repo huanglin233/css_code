@@ -1,0 +1,113 @@
+<!DOCTYPE>
+
+<html>
+    <head>
+        <link ref="stylesheet" type="text/css" src="./base.css"></link>
+        <style>
+            main {
+                width: 100%;
+                padding: 60px 0;
+            }
+            .bevel-corners {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                /**
+                    属性将所有直接子节点上的 align-self 值设置为一个组。align-self 属性设置项目在其包含块中在交叉轴方向上的对齐方式。尝试一下
+                */
+                align-items: center;
+                margin-bottom: 20px;
+            }
+            .bevel-corners > p {
+                width: 116px;
+            }
+            .bevel-corners > div {
+                width: 249px;
+                color: #FFF;
+                padding: 1.2em 1.8em;
+                /**
+                    属性 hyphens 告知浏览器在换行时如何使用连字符连接单词。可以完全阻止使用连字符，
+                    也可以控制浏览器什么时候使用，或者让浏览器决定什么时候使用。
+                */
+                hyphens: auto;
+                text-align: justify;
+                background: #b4a078;
+            }
+            .bevel-corners:nth-of-type(1) > div {
+                /**
+                 函数用于创建一个表示两种或多种颜色线性渐变的图片。其结果属于<gradient>数据类型，是一种特别的<image>数据类型。
+                */
+                background: linear-gradient(45deg, transparent 12px, #b4a078 13px) bottom left, 
+                linear-gradient(135deg, transparent 12px, #b4a078 13px) top left, 
+                linear-gradient(-135deg, transparent 12px, #b4a078 13px) top right, 
+                linear-gradient(-45deg, transparent 12px, #b4a078 13px) bottom right;
+                background-size: 51% 51%;
+                /**
+                    属性定义背景图像的重复方式。背景图像可以沿着水平轴，垂直轴，两个轴重复，或者根本不重复。
+                */
+                background-repeat: no-repeat;
+            }
+            .bevel-corners:nth-of-type(2) > div {
+                /**
+                    radial-gradient()
+                    CSS 函数创建一个图像，该图像由从原点辐射的两种或多种颜色之间的渐进过渡组成
+                    。它的形状可以是圆形或椭圆形。函数的结果是 <gradient> 数据类型的对象
+                */
+                 background: radial-gradient(circle at bottom left, transparent 15px, #b4a078 16px) bottom left, 
+                radial-gradient(circle at top left, transparent 15px, #b4a078 16px) top left, 
+                radial-gradient(circle at top right, transparent 15px, #b4a078 16px) top right, 
+                radial-gradient(circle at bottom right, transparent 15px, #b4a078 16px) bottom right;
+                background-size: 51% 51%;
+                background-repeat: no-repeat;
+            }
+            .bevel-corners:nth-of-type(3) > div{
+                padding: 0 9px;
+                border: 25px solid transparent;
+                border-image: 1 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="3" height="3" fill="%23b4a078"><polygon points="0,1 1,0 2,0 3,1 3,2 2,3 1,3 0,2"/> </svg>');
+                background-clip: padding-box;
+            }
+            .bevel-corners:nth-of-type(4) > div{
+                /**
+                    属性使用裁剪方式创建元素的可显示区域。区域内的部分显示，区域外的隐藏。
+                */
+                clip-path: polygon(20px 0, calc(100% - 20px) 0, 100% 20px, 100% calc(100% - 20px), calc(100% - 20px) 100%, 20px 100%, 0 calc(100% - 20px), 0 20px);
+                transition: 1s clip-path;
+            }
+            .bevel-corners:nth-of-type(4):hover > div{
+                clip-path: polygon(0 0, 0 0, 100% 0, 100% 0, 100% 100%, 100% 100%, 0 100%, 0 100%);
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <div class="bevel-corners">
+                <p>1. linear-gradient</p>
+                <div>
+                    所谓辉煌的人生，不过是欲望的囚徒。 --网络、所谓辉煌的人生，不过是欲望的囚徒。 --网络
+                    所谓辉煌的人生，不过是欲望的囚徒。 --网络、所谓辉煌的人生，不过是欲望的囚徒。 --网络
+                </div>
+            </div>
+            <div class="bevel-corners">
+                <p>2. radial-greadient</p>
+                <div>
+                    所谓辉煌的人生，不过是欲望的囚徒。 --网络、所谓辉煌的人生，不过是欲望的囚徒。 --网络
+                    所谓辉煌的人生，不过是欲望的囚徒。 --网络、所谓辉煌的人生，不过是欲望的囚徒。 --网络
+                </div>
+            </div>
+            <div class="bevel-corners">
+                <p>3. 内联SVG</p>
+                <div>
+                    所谓辉煌的人生，不过是欲望的囚徒。 --网络、所谓辉煌的人生，不过是欲望的囚徒。 --网络
+                    所谓辉煌的人生，不过是欲望的囚徒。 --网络、所谓辉煌的人生，不过是欲望的囚徒。 --网络
+                </div>
+            </div>
+            <div class="bevel-corners">
+                <p>4. clip-path</p>
+                <div>
+                    所谓辉煌的人生，不过是欲望的囚徒。 --网络、所谓辉煌的人生，不过是欲望的囚徒。 --网络
+                    所谓辉煌的人生，不过是欲望的囚徒。 --网络、所谓辉煌的人生，不过是欲望的囚徒。 --网络
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
